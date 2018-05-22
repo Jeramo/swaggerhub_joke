@@ -1,0 +1,141 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "This is a joke API",
+    "version" : "1.0.0",
+    "title" : "Joke API",
+    "contact" : {
+      "email" : "nino.jeanrobert@gmail.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags" : [ {
+    "name" : "admins",
+    "description" : "Secured Admin-only calls"
+  }, {
+    "name" : "developers",
+    "description" : "Operations available to regular developers"
+  } ],
+  "host" : "virtserver.swaggerhub.com",
+  "schemes" : [ "https" ],
+  "basePath" : "/jeanrobert/jokes_api/1.0.0",
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/joke" : {
+      "get" : {
+        "tags" : [ "developers" ],
+        "summary" : "searches joke",
+        "operationId" : "searchJoke",
+        "description" : "By passing in the appropriate options, you can search for\navailable joke in the system\n",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "searchString",
+          "description" : "pass an optional search string for looking up jokes",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "in" : "query",
+          "name" : "skip",
+          "description" : "number of records to skip for pagination",
+          "type" : "integer",
+          "format" : "int32",
+          "minimum" : 0
+        }, {
+          "in" : "query",
+          "name" : "limit",
+          "description" : "maximum number of records to return",
+          "type" : "integer",
+          "format" : "int32",
+          "minimum" : 0,
+          "maximum" : 50
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Joke"
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "admins" ],
+        "summary" : "adds a joke item",
+        "operationId" : "addJoke",
+        "description" : "Adds a joke to the system",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "item",
+          "description" : "Joke object to add",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Joke"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "response"
+          },
+          "400" : {
+            "description" : "invalid input, object invalid"
+          },
+          "409" : {
+            "description" : "an existing item already exists"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Joke" : {
+      "type" : "object",
+      "items" : {
+        "$ref" : "#/definitions/Joke"
+      },
+      "required" : [ "id", "language", "type", "name", "joke" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 12345
+        },
+        "language" : {
+          "type" : "string",
+          "example" : "english"
+        },
+        "type" : {
+          "type" : "string",
+          "example" : "dogs"
+        },
+        "name" : {
+          "type" : "string",
+          "example" : "YIKES!"
+        },
+        "joke" : {
+          "type" : "string",
+          "example" : "How did the little Scottish dog feel when he saw a monster? Terrier-fied!"
+        },
+        "client_defined" : {
+          "$ref" : "#/definitions/ClientDefinedObjectModel"
+        }
+      }
+    },
+    "ClientDefinedObjectModel" : {
+      "type" : "object",
+      "additionalProperties" : true
+    }
+  }
+}
