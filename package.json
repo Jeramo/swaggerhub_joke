@@ -1,0 +1,10 @@
+var InvestmentApplicationApi = require(‘jokes_api’);
+var api = new InvestmentApplicationApi.DefaultApi()
+var callback = function(error, data, response) {
+ if (error) {
+ console.error(error);
+ } else {
+ console.log(‘API called successfully. Returned data: ‘ + data);
+ }
+};
+api.accountOverview(callback);
