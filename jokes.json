@@ -19,7 +19,6 @@
     "name" : "developers",
     "description" : "Operations available to regular developers"
   } ],
-  "host" : "virtserver.swaggerhub.com",
   "schemes" : [ "https" ],
   "basePath" : "/jeanrobert/jokes_api/1.0.0",
   "consumes" : [ "application/json" ],
@@ -29,7 +28,7 @@
       "get" : {
         "tags" : [ "developers" ],
         "summary" : "searches joke",
-        "operationId" : "searchJoke",
+        "operationId" : "searchAllJoke",
         "description" : "By passing in the appropriate options, you can search for\navailable joke in the system\n",
         "produces" : [ "application/json" ],
         "parameters" : [ {
@@ -137,5 +136,6 @@
       "type" : "object",
       "additionalProperties" : true
     }
-  }
+  },
+  "host" : "virtserver.swaggerhub.com"
 }
