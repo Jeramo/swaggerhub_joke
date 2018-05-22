@@ -30,7 +30,7 @@
         "tags" : [ "developers" ],
         "summary" : "searches joke",
         "description" : "By passing in the appropriate options, you can search for\navailable joke in the system\n",
-        "operationId" : "searchJoke",
+        "operationId" : "searchAllJoke",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "searchString",
