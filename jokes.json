@@ -19,6 +19,7 @@
     "name" : "developers",
     "description" : "Operations available to regular developers"
   } ],
+  "host" : "virtserver.swaggerhub.com",
   "schemes" : [ "https" ],
   "basePath" : "/jeanrobert/jokes_api/1.0.0",
   "consumes" : [ "application/json" ],
@@ -136,6 +137,5 @@
       "type" : "object",
       "additionalProperties" : true
     }
-  },
-  "host" : "virtserver.swaggerhub.com"
+  }
 }
