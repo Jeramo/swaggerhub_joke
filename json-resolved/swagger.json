@@ -12,7 +12,7 @@
       "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
-  "host" : "virtserver.swaggerhub.com",
+  "host" : "jeannode.eu-4.evennode.com:3000",
   "basePath" : "/jeanrobert/jokes_api/1.0.0",
   "tags" : [ {
     "name" : "admins",
